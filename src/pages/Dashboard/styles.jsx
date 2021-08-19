@@ -69,7 +69,7 @@ export const Dashboard = styled.div`
     main {
         padding: 1.5rem;
 
-        form {
+        > div {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -95,7 +95,7 @@ export const Dashboard = styled.div`
                 }
             }
 
-            fieldset {
+            > div {
                 display: flex;
                 flex-direction: column;
                 gap: .5rem;
@@ -109,29 +109,10 @@ export const Dashboard = styled.div`
 
                     input {
                         margin: 0;
+                        cursor: pointer;
                     }
                 }
             }
-
-            > button {
-                font-size: 1rem;
-                padding: .25em 1em;
-                background-color: transparent;
-                color: ${props => props.theme.dark};
-                outline: none;
-                border: 1px solid ${props => props.theme.accent};
-                cursor: pointer;
-                transition: all .2s ease;
-                border-radius: 4px;
-
-                &:hover,
-                &:focus {
-                    background-color: ${props => props.theme.accent};
-                    color: ${props => props.theme.light};
-                }
-            }
         }
-
-
     }
 `

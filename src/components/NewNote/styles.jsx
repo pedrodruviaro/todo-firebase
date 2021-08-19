@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-export const NewNote = styled.fieldset`
+export const NewNote = styled.form`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     input {
         padding: 0.15rem;
@@ -13,6 +16,25 @@ export const NewNote = styled.fieldset`
         outline: none;
         border: 1px solid #bbb;
     }
+
+    
+    > button {
+                font-size: 1rem;
+                padding: .25em 1em;
+                background-color: transparent;
+                color: ${props => props.theme.dark};
+                outline: none;
+                border: 1px solid ${props => props.theme.accent};
+                cursor: pointer;
+                transition: all .2s ease;
+                border-radius: 4px;
+
+                &:hover,
+                &:focus {
+                    background-color: ${props => props.theme.accent};
+                    color: ${props => props.theme.light};
+                }
+            }
 `;
 
 export const Textarea = styled.textarea`

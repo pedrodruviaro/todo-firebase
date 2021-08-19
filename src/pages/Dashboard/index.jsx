@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Dashboard } from "./styles";
 import { FcTodoList } from "react-icons/fc";
-import NewTodo from '../../components/NewTodo'
-import NewNote from '../../components/NewNote'
+import NewTodo from "../../components/NewTodo";
+import NewNote from "../../components/NewNote";
 
 export default function Index() {
     const [user] = useAuth();
     const [title, setTitle] = useState("");
     const [type, setType] = useState("todo");
-
-    // submit handler
-    function handleNewContent(event) {
-        event.preventDefault();
-
-        console.log({ title, type });
-    }
 
     // radio handler
     const isRadioSelected = (value) => type === value;
@@ -37,7 +30,7 @@ export default function Index() {
             </header>
 
             <main>
-                <form onSubmit={handleNewContent}>
+                <div>
                     <input
                         type="text"
                         placeholder="Title"
@@ -46,7 +39,7 @@ export default function Index() {
                         required
                     />
 
-                    <fieldset>
+                    <div>
                         <label>
                             <input
                                 type="radio"
@@ -67,12 +60,17 @@ export default function Index() {
                             />
                             Note
                         </label>
-                    </fieldset>
+                    </div>
 
-                    {type === "todo" ? <NewTodo /> : <NewNote />}
-
-                    <button type="submit">Add</button>
-                </form>
+                    {type === "todo" ? (
+                        <NewTodo title={title} setTitle={setTitle} />
+                    ) : (
+                        <NewNote
+                            setTitle={setTitle}
+                            title={title}
+                        />
+                    )}
+                </div>
             </main>
         </Dashboard>
     );
